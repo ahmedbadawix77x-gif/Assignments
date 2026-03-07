@@ -110,3 +110,16 @@ def delete_event(request, event_id):
 
     event.delete()
     return JsonResponse({"message": "Event deleted"})
+
+
+
+def home(request):
+
+    from django.http import HttpResponse
+    return HttpResponse("welcome to home page")
+
+
+def about(request):
+
+    from django.http import HttpResponse
+    return HttpResponse("welcome to about page")
