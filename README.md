@@ -1,17 +1,23 @@
-# Ahmed Badawy's Backend Assignments
+# Event Management API - Task 2
 
-This repository contains my progress and submissions for the Backend track.
+This is the updated version of Assignment-1. المشروع ده اتطور عشان نستخدم الـ **Django REST Framework (DRF)** ونمشي على الـ Best Practices في الـ API design.
 
-## 📂 Repository Structure
+## Serializers
+Switching to `ModelSerializer` was a game changer. وفر عليا كتابة كود كتير لأنه بيعمل **automated mapping** بين الـ Model والـ API Fields لوحده، وده بيخلي الـ code أنضف بكتير وأسهل في الـ maintenance.
 
-- **[Assignment 1](./Assignment-1/)**: Initial Event Planner project.
-- **[Assignment 2](./Assignment-2/)**: Advanced Event Management System with UUIDs, RESTful API structure, and comprehensive testing.
+## Logic & Validation
+ضفت شوية Logic عشان أتأكد إن الداتا اللي داخلة سليمة:
+- **Date Check**: الـ `start_date` لازم يكون قبل الـ `end_date` (منطقي جداً، مفيش Event بيبدأ بعد ما يخلص).
+- **Whitespace Validation**: عملت تشيك على الـ `name` والـ `location` عشان أمنع دخول أي داتا فاضية أو مجرد مسافات (whitespaces) للـ database.
 
----
+## Technical Details
+- **UUIDs**: الـ IDs دلوقتي شغالة بـ **UUID** بدل الـ Integers التقليدية، وده أحسن للأمان والـ global uniqueness.
+- **Endpoints**: كل الـ views شغالة بـ `@api_view` وبترجع الـ correct status codes والـ JSON responses بشكل بروفيشنال.
 
-### Assignment 2 (Current)
-The latest task involves a robust Django system for managing events with a "Magic Spell" narrative.
-- **Key Features**: full CRUD, UUID identification, JSON error handling.
-- **Tech Stack**: Django, Python, SQLite.
+## Status
+الـ tests كلها **passing** وزي الفل. الشغل جاهز تماماً للـ Friday review.
 
-For detailed instructions on how to run Assignment 2, please refer to the [Assignment-2 README](./Assignment-2/README.md).
+```powershell
+# Run tests:
+python manage.py test events
+```
